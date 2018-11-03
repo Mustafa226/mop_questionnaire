@@ -17,13 +17,13 @@ html(lang='en')
       form(name="login", action = "/users/signup", method = "post").form-signin
         h2.form-signin-heading Please sign up
         label.sr-only(for='inputEmail') First Name
-        input(type="text", name="first_name", id="first_name").form-control
+        input(type="text", name="first_name", id="first_name" placeholder="First Name").form-control
         label.sr-only(for='inputPassword') Last Name
-        input(type="text", name="last_name", id="last_name").form-control
+        input(type="text", name="last_name", id="last_name" placeholder="Last Name").form-control
         label.sr-only(for='inputPassword') Password
-        input(type="text", name="email", id="email").form-control
+        input(type="text", name="email", id="email" placeholder="Email").form-control
         label.sr-only(for='inputPassword') Email
-        input(type="password", name="password", id="password").form-control
+        input(type="password", name="password", id="password" placeholder="Password").form-control
         br
         button.btn.btn-lg.btn-primary.btn-block(type='submit' ac) Sign Up
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')

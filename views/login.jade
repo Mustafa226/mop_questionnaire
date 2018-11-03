@@ -16,10 +16,10 @@ html(lang='en')
     .container
       form(name="login", action = "/users/login", method = "post").form-signin
         h2.form-signin-heading Please sign in
-        label.sr-only(for='inputEmail') Email address
-        input(type="text", name="email", id="email").form-control
-        label.sr-only(for='inputPassword') Password
-        input(type="text", name="password", id="password").form-control
+        label.sr-only(for='email') Email address
+        input(type="text", name="email", id="email" placeholder="Email address").form-control
+        label.sr-only(for='password') Password
+        input(type="text", name="password", id="password" placeholder="Password").form-control
         br
         button.btn.btn-lg.btn-primary.btn-block(type='submit' ac) Sign In
         br
