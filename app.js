@@ -3,24 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mysql = require('mysql');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-
-var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'admin',
-    password : 'nimda',
-    database : 'mopquestionnaire'
-});
-
-// connect to DB
-connection.connect();
-
-global.db = connection;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
