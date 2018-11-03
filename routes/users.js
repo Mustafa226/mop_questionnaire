@@ -9,20 +9,16 @@ router.use(cors());
 
 process.env.SECRET_KEY = "mopquestionnaire";
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-    res.send('respond with a resource');
+router.get('/signup', function (req, res) {
+    res.render('signup');
 });
 
 router.post('/signup', function (req, res) {
-
     var appData = {
         "error": 1,
         "data": ''
     };
-
     var currentDate = new Date();
-
     var registrationFormData = {
         "first_name": req.body.first_name,
         "last_name": req.body.last_name,
@@ -30,12 +26,11 @@ router.post('/signup', function (req, res) {
         "password": req.body.password,
         "created": currentDate
     };
-
     db.query("INSERT INTO users SET ?", registrationFormData, function (error, rows, fields) {
         if (!error) {
             appData["error"] = 0;
             appData["data"] = "User is registered sucesssfully!";
-            res.status(201).json(appData);
+            res.redirect("/");
         } else {
             appData["error"] = 1;
             appData["data"] = "There was an error while trying to SET new user to the DB!";
@@ -57,10 +52,11 @@ router.post('/login', function (req, res) {
         } else {
             if (rows.length > 0) {
                 if (rows[0].password == password) {
-                    token = jwt.sign(rows[0], process.env.SECRET_KEY, {expiresIn: 5000});
+                    token = jwt.sign(JSON.parse(JSON.stringify(rows[0])), process.env.SECRET_KEY, {expiresIn: 5000});
                     appData["error"] = 0;
                     appData["token"] = token;
-                    res.status(200).json(appData);
+                    // res.status(200).json(appData);
+                    res.redirect('/home');
                 } else {
                     appData["error"] = 1;
                     appData["data"] = "Email and Passowrd do not match!";

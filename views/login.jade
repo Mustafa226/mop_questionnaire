@@ -1,0 +1,29 @@
+//login.jade
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='icon', href='../../favicon.ico')
+    title Sign In
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
+    link(href='../css/signin.css', rel='stylesheet')
+  body(data-spy='scroll', data-target='.scrollspy')
+    .container
+      form(name="login", action = "/users/login", method = "post").form-signin
+        h2.form-signin-heading Please sign in
+        label.sr-only(for='inputEmail') Email address
+        input(type="text", name="email", id="email").form-control
+        label.sr-only(for='inputPassword') Password
+        input(type="text", name="password", id="password").form-control
+        br
+        button.btn.btn-lg.btn-primary.btn-block(type='submit' ac) Sign In
+        br
+        | Not registered?
+        a(href='/users/signup')  Register Now.
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
