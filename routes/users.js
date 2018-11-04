@@ -42,14 +42,13 @@ router.post('/signup', function (req, res) {
         .catch(function (reason) {
             console.log("There was an error while creating new User")
         });
-
 });
 
 router.post('/login', function (req, res) {
     var email = req.body.email;
     var password = req.body.password;
     models.Guest.find({
-        where : {
+        where: {
             email: email
         }
     }).then(function (value) {
@@ -59,6 +58,28 @@ router.post('/login', function (req, res) {
             res.redirect('/');
         }
     });
+});
+
+router.get('/password/reset', function (req, res) {
+    res.render('passwordreset')
+});
+
+router.post('/password/reset', function (req, res) {
+    var email = req.body.email;
+    var newPassword = req.body.password;
+    models.Guest.find({
+        where: {
+            email: email
+        }
+    }).then(function (value) {
+            value.set("password", newPassword);
+            value.save();
+            res.redirect('/');
+        })
+        .catch(function (reason) {
+            console.log("Failed to update password! Error: " + reason)
+            res.redirect('/users/password/reset');
+        });
 });
 
 router.get('/list', function (req, res, next) {

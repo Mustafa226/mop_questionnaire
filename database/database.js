@@ -29,6 +29,4 @@ connection.query("INSERT INTO users SET ?", registrationFormData, function (erro
     }
 });
 
-// global.db = connection;
-
 module.exports.connection = connection;
