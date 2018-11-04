@@ -13,7 +13,8 @@ block content
 				h2.lead Add a Choice
 				form(method='post', action= '/questions/' + question.id+'/choices/add')
 					.input-group
-						input.form-control(type='text', name='choice', placeholder='Enter a choice', required)
+						input.form-control(type='text', name='type', placeholder='Enter a choice Type', required)
+						input.form-control(type='text', name='value', placeholder='Enter a choice Value')
 						span.input-group-btn
 							button.btn.btn-primary.btn-block Add Choice
 			.col-md-6
@@ -24,10 +25,8 @@ block content
 							form(method='post', action='/questions/' + question.id + '/choices/' + choice.id)
 								.row
 									.col-xs-6
-										input.form-control(type='text', name='choice', id='choice_'+choice.id, value=choice.choice, required)
-									.col-xs-3
-										button.btn.btn-primary.btn-block Update Choice
-											i.glyphicon.glyphicon-check
+										input.form-control(type=choice.type, name='choice', id='choice_'+choice.id, value=choice.value, required)
+										|   #{choice.value}
 									.col-xs-3
 										a.btn.btn-primary.btn-block(href='/questions/' + question.id + '/choices/' + choice.id + '/delete') Remove Choice
 											i.glyphicon.glyphicon-trash

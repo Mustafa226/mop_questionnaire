@@ -46,10 +46,10 @@ router.post('/:id', function (req, res) {
 
 router.post('/:id/choices/add', function (req, res) {
     models.Choice.create({
-        choice: req.body.choice,
+        type: req.body.type,
+        value: req.body.value,
         QuestionId: req.params.id
     })
-
         .then(function () {
             res.redirect('/questions/' + req.params.id);
         });
@@ -60,9 +60,21 @@ router.post('/:questionId/choices/:choiceId', function (req, res) {
         choice.set('choice', req.body.choice)
             .save()
             .then(function (choice) {
+                req.flash('success', 'updated');
                 res.redirect('/questions/' + req.params.questionId)
             })
     })
+});
+
+router.get('/:id/choices/:choiceId/delete', function(req, res) {
+    models.Choice.destroy({
+        where: {
+            id: req.params.choiceId
+        }
+    })
+        .then(function() {
+            res.redirect('/questions/' + req.params.id);
+        });
 });
 
 module.exports = router;
