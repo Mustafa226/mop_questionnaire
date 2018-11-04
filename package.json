@@ -19,6 +19,9 @@
     "req-flash": "^0.0.3",
     "jsonwebtoken": "^8.3.0",
     "cors": "^2.8.4",
-    "jade-bootstrap": "^1.0.14"
+    "jade-bootstrap": "^1.0.14",
+    "sequelize": "^4.41.0",
+    "mysql2": "^1.6.1",
+    "uuid": "^3.3.2"
   }
 }
