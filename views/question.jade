@@ -8,7 +8,7 @@ block content
 				form(method='post', action='/questions/'+ question.id)
 					.form-group
 						textarea.input-lg(name='question', id='question', class='form-control', rows='3', required)=question.question
-					button.btn.btn-primary.btn-block Save
+					button.btn.btn-primary.btn-block Update Question
 					a.btn.btn-link.btn-block(href='/questions') Cancel
 				h2.lead Add a Choice
 				form(method='post', action= '/questions/' + question.id+'/choices/add')
@@ -26,7 +26,7 @@ block content
 									.col-xs-6
 										input.form-control(type='text', name='choice', id='choice_'+choice.id, value=choice.choice, required)
 									.col-xs-3
-										button.btn.btn-primary.btn-block Save Choice
+										button.btn.btn-primary.btn-block Update Choice
 											i.glyphicon.glyphicon-check
 									.col-xs-3
 										a.btn.btn-primary.btn-block(href='/questions/' + question.id + '/choices/' + choice.id + '/delete') Remove Choice
