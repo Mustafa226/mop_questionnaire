@@ -1,7 +1,5 @@
-var database = require('../database/database');
 var express = require('express');
 var router = express.Router();
-var jwt = require("jsonwebtoken");
 var cors = require('cors');
 var models = require('../models');
 var uuid = require('uuid');

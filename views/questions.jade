@@ -1,0 +1,29 @@
+extends layout
+
+block content
+
+    div.content
+        div(class="centered")
+            .form-group
+                form(method='post', action='/questions/add-question', role="form", rows='2')
+                    .form-group
+                        br
+                        textarea.input-lg.form-control(id='question_form', type='text', name='question', placeholder='Enter a question', required)
+                        button.btn.btn-primary.btn-lg(type='submit') Create a Question
+            h2.lead or Manage Question
+    .row
+            table.table
+                each q in questions
+                    tr
+                        td
+                            a(class='question' href='/questions/' + q.id)=q.question
+                        td.col-md-2
+                            .btn-toolbar
+                                a.btn.btn-primary.singlebutton(href='/questions/'+q.id)
+                                    i.glyphicon.glyphicon-pencil
+                                    span  Edit
+                                a.btn.btn-success.singlebutton(href='/questions/'+q.id+'/results')
+                                    i.glyphicon.glyphicon-stats
+                                    span  Results
+                                a.btn.btn-danger.singlebutton(href='/questions/'+q.id+'/delete')
+                                    i.glyphicon.glyphicon-trash

@@ -21,7 +21,10 @@ fs
     });
 
 Object.keys(db).forEach(function(modelName) {
-    db[modelName].sync({"force":true});
+    if ("associate" in db[modelName].options.classMethods) {
+        db[modelName].options.classMethods.associate(db);
+    }
+    db[modelName].sync();
 });
 
 db.sequelize = sequelize;
