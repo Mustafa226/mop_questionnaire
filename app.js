@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var flash = require('express-flash');
+var session = require('express-session');
 
 var Index = require('./routes/index');
 var Users = require('./routes/users');
@@ -21,6 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: 'keyboard cat'}));
+app.use(flash());
 
 app.use('/', Index);
 app.use('/users', Users);

@@ -2,7 +2,8 @@
 
 module.exports = function(sequelize, DataTypes) {
     var Choice = sequelize.define('Choice', {
-        choice: DataTypes.STRING
+        type: DataTypes.STRING,
+        value: DataTypes.STRING
     }, {
         classMethods: {
             associate: function(models) {
