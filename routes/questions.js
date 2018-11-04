@@ -33,4 +33,15 @@ router.get('/:id', function (req, res) {
         });
 });
 
+router.post('/:id/choices/add', function(req, res) {
+    models.Choice.create( {
+        choice: req.body.choice,
+        QuestionId: req.params.id
+    })
+
+        .then(function() {
+            res.redirect('/questions/' + req.params.id);
+        });
+});
+
 module.exports = router;
