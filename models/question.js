@@ -6,14 +6,19 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         classMethods: {
             associate: function(models) {
-                Question.belongsToMany(models.Guest, {
+                /*Question.belongsToMany(models.Guest, {
                     through: {
                         model: models.QuestionGuest,
                         unique: false
                     },
                     constraints: false
+                });*/
+                Question.belongsTo(models.Questionnaire, {
+                    onDelete: 'CASCADE',
+                    foreignKey: {
+                        allowNull: true
+                    }
                 });
-
                 Question.hasMany(models.Choice);
             }
         }

@@ -7,10 +7,10 @@ module.exports = function(sequelize, DataTypes) {
     },{
         classMethods: {
             associate: function(models) {
-                QuestionGuest.belongsTo(models.Choice, {
+                /*QuestionGuest.belongsTo(models.Choice, {
                     constraints: false,
                     foreignKey: 'ChoiceId'
-                });
+                });*/
             }
         }
     });

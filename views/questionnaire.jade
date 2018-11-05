@@ -1,0 +1,32 @@
+extends layout
+
+block content
+	div.content
+		.row
+			.col-md-6
+				h2.lead Edit Question
+				form(method='post', action='/questionnares/'+ questionnaire.id)
+					.form-group
+						textarea.input-lg(name='question', id='question', class='form-control', rows='3', required)=questionnaire.questionnaire
+					button.btn.btn-primary.btn-block Update Question
+					a.btn.btn-link.btn-block(href='/questions') Cancel
+				h2.lead Add a Question
+				form(method='post', action= '/questionnaires/' + questionnaire.id+'/questions/add')
+					.input-group
+						select(name='type')
+							each type in ['text', 'radio', 'checkbox']
+								option(value=type) #{type}
+						input.form-control(type='text', name='value', placeholder='Enter a question Value')
+						span.input-group-btn
+							button.btn.btn-primary.btn-block Add Question
+			.col-md-6
+				h2.lead Edit Questions
+				ul.list-group
+					each question in questionnaire.Questions
+						li.list-group-item
+							| #{question.question}
+		.row
+			.col-md-6
+				p
+					br
+					a.button.btn.btn-primary(href='/questions/') Back to questions
