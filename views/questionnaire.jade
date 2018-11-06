@@ -5,22 +5,19 @@ block content
 		.row
 			.col-md-6
 				h2.lead Edit Question
-				form(method='post', action='/questionnares/'+ questionnaire.id)
+				form(method='post', action='/questionnaires/'+ questionnaire.id)
 					.form-group
 						textarea.input-lg(name='question', id='question', class='form-control', rows='3', required)=questionnaire.questionnaire
-					button.btn.btn-primary.btn-block Update Question
+					button.btn.btn-primary.btn-block Update Questionnaire
 					a.btn.btn-link.btn-block(href='/questions') Cancel
-				h2.lead Add a Question
-				form(method='post', action= '/questionnaires/' + questionnaire.id+'/questions/add')
-					.input-group
-						select(name='type')
-							each type in ['text', 'radio', 'checkbox']
-								option(value=type) #{type}
-						input.form-control(type='text', name='value', placeholder='Enter a question Value')
-						span.input-group-btn
-							button.btn.btn-primary.btn-block Add Question
-			.col-md-6
-				h2.lead Edit Questions
+				h2.lead Add availabe questions
+				table.table
+					each q in questions
+						tr
+							td
+								a(class='question' href='/questionnaires/' + questionnaire.id + '/question/' + q.id)=q.question
+			col-md-6
+				h2.lead Edit already selected questions
 				ul.list-group
 					each question in questionnaire.Questions
 						li.list-group-item
@@ -29,4 +26,4 @@ block content
 			.col-md-6
 				p
 					br
-					a.button.btn.btn-primary(href='/questions/') Back to questions
+					a.button.btn.btn-primary(href='/questionnaires/') Back to questionnaires

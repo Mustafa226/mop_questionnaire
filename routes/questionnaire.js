@@ -26,9 +26,23 @@ router.get('/:id', function (req, res) {
             if (!questionnaire) {
                 res.status(500).send('Cannot find questionnaire!');
             } else {
-                res.render('questionnaire', {questionnaire: questionnaire});
+                models.Question.findAndCountAll().then(function (searchResult) {
+                    var total = searchResult.count;
+                    res.render('questionnaire', {questionnaire: questionnaire, questions: searchResult.rows});
+                });
             }
         });
+});
+
+router.get('/:questionnaireId/question/:questionId', function (req, res) {
+    models.Question.findById(req.params.questionId)
+        .then(function (question) {
+        question.set('QuestionnaireId', req.params.questionnaireId)
+            .save()
+            .then(function (question) {
+                res.redirect('/questionnaires/' + req.params.questionnaireId);
+            });
+    });
 });
 
 module.exports = router;
