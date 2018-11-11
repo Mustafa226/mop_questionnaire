@@ -4,7 +4,7 @@ block content
 	div.content
 		.row
 			.col-md-6
-				h2.lead Edit Question
+				h2.lead Edit Questionnaire
 				form(method='post', action='/questionnaires/'+ questionnaire.id)
 					.form-group
 						textarea.input-lg(name='question', id='question', class='form-control', rows='3', required)=questionnaire.questionnaire

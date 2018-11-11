@@ -13,12 +13,13 @@ module.exports = function(sequelize, DataTypes) {
                     },
                     constraints: false
                 });*/
-                Question.belongsTo(models.Questionnaire, {
+                /*Question.belongsTo(models.Questionnaire, {
                     onDelete: 'CASCADE',
                     foreignKey: {
                         allowNull: true
                     }
-                });
+                });*/
+                Question.belongsToMany(models.Questionnaire, {through: 'QuestionnaireQuestion'});
                 Question.hasMany(models.Choice);
             }
         }

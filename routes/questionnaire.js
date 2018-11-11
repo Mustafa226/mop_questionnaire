@@ -35,13 +35,14 @@ router.get('/:id', function (req, res) {
 });
 
 router.get('/:questionnaireId/question/:questionId', function (req, res) {
-    models.Question.findById(req.params.questionId)
-        .then(function (question) {
-        question.set('QuestionnaireId', req.params.questionnaireId)
-            .save()
-            .then(function (question) {
-                res.redirect('/questionnaires/' + req.params.questionnaireId);
-            });
+    models.QuestionnaireQuestion.create({
+        QuestionnaireId : req.params.questionnaireId,
+        QuestionId : req.params.questionId
+    }).then(function (questionnaireQuestion) {
+        res.redirect('/questionnaires/' + req.params.questionnaireId);
+    }).catch(function (reason) {
+        console.error(reason);
+        res.status(500).send('There was an error!');
     });
 });
 
