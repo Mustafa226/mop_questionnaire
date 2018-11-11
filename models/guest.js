@@ -11,11 +11,11 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         classMethods: {
             associate: function(models) {
-                /*Guest.belongsToMany(models.Question, {
+                Guest.belongsToMany(models.Questionnaire, {
                     through: {
-                        model: models.QuestionGuest
+                        model: models.QuestionnaireGuest
                     }
-                });*/
+                });
             }
         }
     });

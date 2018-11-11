@@ -1,18 +1,18 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
-    var QuestionGuest = sequelize.define('QuestionGuest', {
+    var QuestionnaireGuest = sequelize.define('QuestionnaireGuest', {
         GuestId: DataTypes.STRING,
-        QuestionId: DataTypes.INTEGER
+        QuestionnaireId: DataTypes.INTEGER
     },{
         classMethods: {
             associate: function(models) {
-                /*QuestionGuest.belongsTo(models.Choice, {
+                QuestionnaireGuest.belongsTo(models.Choice, {
                     constraints: false,
                     foreignKey: 'ChoiceId'
-                });*/
+                });
             }
         }
     });
-    return QuestionGuest;
+    return QuestionnaireGuest;
 };
