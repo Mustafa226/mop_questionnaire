@@ -46,4 +46,11 @@ router.get('/:questionnaireId/question/:questionId', function (req, res) {
     });
 });
 
+router.get('/take', function (req, res) {
+    models.Questionnaire.findAndCountAll().then(function (searchResult) {
+        var total = searchResult.count;
+        res.render('questionnaires', {questionnaires: searchResult.rows});
+    });
+});
+
 module.exports = router;

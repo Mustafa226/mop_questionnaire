@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+    div.content
+        div(class="centered")
+            .form-group
+                form(method='post', action='/questionnaires/add-questionnaire', role="form", rows='2')
+                    .form-group
+                        table.table
+                            each q in questionnaires
+                                tr
+                                    td
+                                        = q.questionnaire
+                                each question in q.Questions
+                                    tr
+                                        td
+                                            = question.question
+.row
+          .col-md-6
+            p
+              br
+              a.button.btn.btn-primary(href='/home') Back to home page
